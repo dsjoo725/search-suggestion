@@ -1,22 +1,20 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-interface Props {
-  isFocus: boolean;
-}
-const Wrapper = styled.div<Props>`
-  ${({ isFocus }) => css`
-    background: var(--white-color);
-    border-radius: 42px;
-    max-width: 490px;
-    width: 100%;
-    padding-right: 8px;
+const Wrapper = styled.div<{ $isFocus: boolean }>`
+  border: 2px solid
+    ${(props) => (props.$isFocus ? 'var(--blue-color)' : 'var(--white-color)')};
+  border-radius: 2.5rem;
+  background: var(--white-color);
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 490px;
+  width: 100%;
+  padding-right: 8px;
 
-    border: 2px solid ${isFocus ? 'var(--blue-color)' : 'var(--white-color)'};
-  `}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
 `;
 
 const InputLabel = styled.label`
