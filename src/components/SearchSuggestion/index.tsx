@@ -1,7 +1,7 @@
 import React from 'react';
 
-function index() {
-  return <div>index</div>;
+function SearchSuggestion() {
+  return <div>SearchSuggestion</div>;
 }
 
-export default index;
+export default SearchSuggestion;
