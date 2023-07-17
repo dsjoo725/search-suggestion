@@ -7,11 +7,12 @@ import { Suggestion } from '../../constants/type';
 
 interface Props {
   suggestions: Suggestion[];
+  isLoading: boolean;
   inputText: string;
   setInputText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function SearchBar({ suggestions, inputText, setInputText }: Props) {
+function SearchBar({ suggestions, isLoading, inputText, setInputText }: Props) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
   const handleInputText = (event: React.FormEvent<HTMLInputElement>) => {
@@ -32,7 +33,11 @@ function SearchBar({ suggestions, inputText, setInputText }: Props) {
       </S.InputLabel>
       <Button Icon={SearchIcon} />
       {isFocus && (
-        <SearchSuggestion suggestions={suggestions} inputText={inputText} />
+        <SearchSuggestion
+          isLoading={isLoading}
+          suggestions={suggestions}
+          inputText={inputText}
+        />
       )}
     </S.Wrapper>
   );
