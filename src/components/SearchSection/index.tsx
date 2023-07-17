@@ -2,16 +2,25 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar';
 import * as S from './style';
 import { Suggestion } from '../../constants/type';
-import { cacheSearch } from '../../utils/cacheSearch';
+import { SuggestionService } from '../../service/SuggestionService';
 
 function SearchSection() {
   const [inputText, setInputText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
   useEffect(() => {
-    cacheSearch('search-suggestion', inputText).then((res) => {
-      setSuggestions(res);
-    });
+    setIsLoading(true);
+    const suggestionService = new SuggestionService();
+    suggestionService
+      .get(inputText)
+      .then((res) => {
+        setSuggestions(res);
+      })
+      .catch((err) => {
+        alert(err);
+      })
+      .finally(() => setIsLoading(false));
   }, [inputText]);
 
   return (
@@ -23,6 +32,7 @@ function SearchSection() {
         suggestions={suggestions}
         inputText={inputText}
         setInputText={setInputText}
+        isLoading={isLoading}
       />
     </S.Wrapper>
   );
