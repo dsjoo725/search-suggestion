@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from '../SearchBar';
 import * as S from './style';
-import { search } from '../../apis/search';
 import { Suggestion } from '../../constants/type';
+import { cacheSearch } from '../../utils/cacheSearch';
 
 function SearchSection() {
   const [inputText, setInputText] = useState('');
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
   useEffect(() => {
-    search(inputText).then((res) => {
-      console.log(res);
+    cacheSearch('search-suggestion', inputText).then((res) => {
       setSuggestions(res);
     });
   }, [inputText]);

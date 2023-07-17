@@ -17,6 +17,15 @@ const Title = styled.div`
   color: var(--darkgray-color);
   padding: 8px 24px;
 `;
+const SubContent = styled.div`
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 1.6;
+  color: var(--gray-color);
+
+  padding: 8px 24px;
+`;
 const Content = styled.button`
   border: none;
   width: 100%;
@@ -56,4 +65,4 @@ const Dvider = styled.div`
   margin-block: 16px;
 `;
 
-export { Wrapper, Title, Content, Dvider, TagList };
+export { Wrapper, Title, SubContent, Content, Dvider, TagList };

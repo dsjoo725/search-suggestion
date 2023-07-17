@@ -36,6 +36,10 @@ const Placeholder = styled.div`
   font-weight: 400;
   color: var(--gray-color);
   cursor: text;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 export { Wrapper, InputLabel, Input, Placeholder };
