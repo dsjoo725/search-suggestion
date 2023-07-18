@@ -1,8 +1,9 @@
+import { Suggestion } from '../constants/type';
 import { CacheRepository } from '../repository/CacheRepository';
 import apiClient from '../utils/apiClient';
 
 export class SuggestionService {
-  async get(textInput: string) {
+  async get(textInput: string): Promise<Suggestion[]> {
     const text = textInput.trim();
 
     if (text === '') return [];
@@ -15,9 +16,9 @@ export class SuggestionService {
 
     console.info('calling api');
     const response = await apiClient.get(`/sick?q=${text}`);
+    const data = response.data.slice(0, 7);
+    await cacheRepository.save(text, data);
 
-    await cacheRepository.save(text, response.data);
-
-    return response.data;
+    return data;
   }
 }

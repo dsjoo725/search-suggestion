@@ -30,11 +30,6 @@ const Content = styled.button`
   border: none;
   width: 100%;
   background: var(--white-color);
-
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: -0.018em;
-  line-height: 1.6;
   padding: 8px 24px;
 
   display: flex;
@@ -52,6 +47,16 @@ const Content = styled.button`
   }
 `;
 
+const Text = styled.span`
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 const TagList = styled.div`
   display: flex;
   align-items: center;
@@ -65,4 +70,4 @@ const Dvider = styled.div`
   margin-block: 16px;
 `;
 
-export { Wrapper, Title, SubContent, Content, Dvider, TagList };
+export { Wrapper, Title, SubContent, Content, Dvider, TagList, Text };

@@ -11,6 +11,8 @@ const Button = styled.button`
   justify-content: center;
   background: var(--blue-color);
   color: var(--white-color);
+
+  cursor: pointer;
 `;
 
 export { Button };

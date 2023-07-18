@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SearchBar from '../SearchBar';
 import * as S from './style';
-import { Suggestion } from '../../constants/type';
-import { SuggestionService } from '../../service/SuggestionService';
+import useDebounce from '../../hooks/useDebounce';
+import useSuggestions from '../../hooks/useSuggestions';
 
 function SearchSection() {
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    const suggestionService = new SuggestionService();
-    suggestionService
-      .get(inputText)
-      .then((res) => {
-        setSuggestions(res);
-      })
-      .catch((err) => {
-        alert(err);
-      })
-      .finally(() => setIsLoading(false));
-  }, [inputText]);
+  const debouncedInputText = useDebounce(inputText, 300, setIsLoading);
+  const suggestions = useSuggestions(debouncedInputText, setIsLoading);
 
   return (
     <S.Wrapper>
