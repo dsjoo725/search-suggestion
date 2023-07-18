@@ -1,5 +1,5 @@
 import { Suggestion } from '../constants/type';
-import { CacheRepository } from '../repository/CacheRepository';
+import { CacheRepository } from '../repositories/CacheRepository';
 import apiClient from '../utils/apiClient';
 
 export class SuggestionService {

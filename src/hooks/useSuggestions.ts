@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Suggestion } from '../constants/type';
-import { SuggestionService } from '../service/SuggestionService';
+import { SuggestionService } from '../services/SuggestionService';
 
 export default function useSuggestions(
   debouncedInputText: string,
