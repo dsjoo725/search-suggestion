@@ -145,7 +145,6 @@ export class SuggestionService {
 ### 2. 입력마다 API 호출하지 않도록 API 호출 횟수를 줄이는 전략 수립 및 실행
 
 ![Debouncing](https://github.com/eosun77/search-suggestion/assets/100937653/80c8943a-227e-4373-92df-60c54252bdce)
-be-8869-af87778aa3c2)
 
 빠른 연속 입력에 대한 API 호출을 방지하기 위해 특정 시간 동안 추가 호출을 지연시키는 Debouncing 기법을 사용했습니다.
 
