@@ -24,7 +24,8 @@ function SearchSuggestion({
   const suggestionRefs = useRef<HTMLElement[]>([]);
 
   const selectSuggestion = () => {
-    setInputText(suggestionRefs.current[focusedIndex].innerText);
+    suggestionRefs.current[focusedIndex] &&
+      setInputText(suggestionRefs.current[focusedIndex].innerText);
     setIsFocus(false);
   };
   const focusedIndex = useKeyboardNavigation(
