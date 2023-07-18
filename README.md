@@ -23,6 +23,8 @@ https://github.com/walking-sunset/assignment-api
 
 ### 1. API 호출별로 로컬 캐싱 구현
 
+![cache](https://github.com/eosun77/search-suggestion/assets/100937653/1891a9de-21b9-47be-8869-af87778aa3c2)
+
 CacheRepository 클레스를 통해 cache API를 사용해 cache를 관리하는 기능을 분리했습니다.
 
 - #EXPIRATION_TIME을 통해 만료시간을 설정할 수 있습니다.
@@ -111,6 +113,9 @@ export class SuggestionService {
 
 ### 2. 입력마다 API 호출하지 않도록 API 호출 횟수를 줄이는 전략 수립 및 실행
 
+![Debouncing](https://github.com/eosun77/search-suggestion/assets/100937653/80c8943a-227e-4373-92df-60c54252bdce)
+be-8869-af87778aa3c2)
+
 빠른 연속 입력에 대한 API 호출을 방지하기 위해 특정 시간 동안 추가 호출을 지연시키는 Debouncing 기법을 사용했습니다.
 
 - `value`가 변경되면 `delay` 시간동안 지연시킨 후에 `debouncedValue`를 반환합니다.
@@ -142,6 +147,8 @@ export default function useDebounce(
 ```
 
 ### 3. 키보드만으로 추천 검색어들로 이동 가능하도록 구현
+
+![keyboard](https://github.com/eosun77/search-suggestion/assets/100937653/ef0b95c1-3e6d-4282-bcd5-3af76ab08c3d)
 
 키보드 이벤트 함수를 `window.addEventListener`에 추가하는 기능을 분리했습니다.
 
@@ -228,8 +235,8 @@ export const useKeyboardNavigation = (
 
 추천 검색어를 보여주는 컴포넌트입니다.
 
-- 추천 검색어를 suggestionRefs 배열에 저장합니다.
-- 엔터를 누르면 해당 text를 inputText로 변경합니다.
+- ref 속성을 이용하여 추천 검색어 참조를 suggestionRefs 배열에 저장합니다.
+- 엔터를 누르면 focus중인 index의 text를 inputText로 변경합니다.
 
 ```tsx
 // SearchSuggestion/index.tsx
