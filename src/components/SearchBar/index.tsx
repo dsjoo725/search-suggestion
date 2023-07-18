@@ -3,6 +3,7 @@ import * as S from './style';
 import Button from '../Button';
 import SearchSuggestion from '../SearchSuggestion';
 import { ReactComponent as SearchIcon } from '../../assets/searchIcon.svg';
+import { ReactComponent as XIcon } from '../../assets/xIcon.svg';
 import { Suggestion } from '../../constants/type';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
@@ -21,15 +22,21 @@ function SearchBar({ suggestions, isLoading, inputText, setInputText }: Props) {
     setInputText(event.currentTarget.value);
   };
 
+  const handleResetText = () => {
+    setInputText('');
+  };
+
   return (
     <S.Wrapper $isFocus={isFocus} ref={ref}>
       <S.InputLabel>
         {isFocus || inputText ? (
-          <S.Input
-            value={inputText}
-            onInput={handleInputText}
-            onFocus={() => setIsFocus(true)}
-          />
+          <>
+            <S.Input
+              value={inputText}
+              onInput={handleInputText}
+              onFocus={() => setIsFocus(true)}
+            />
+          </>
         ) : (
           <S.Placeholder onClick={() => setIsFocus(true)}>
             <SearchIcon width="16px" height="16px" fill="var(--gray-color)" />
@@ -37,6 +44,9 @@ function SearchBar({ suggestions, isLoading, inputText, setInputText }: Props) {
           </S.Placeholder>
         )}
       </S.InputLabel>
+      {isFocus && (
+        <Button Icon={XIcon} size="sm" color="gray" onClick={handleResetText} />
+      )}
       <Button Icon={SearchIcon} />
       {isFocus && (
         <SearchSuggestion

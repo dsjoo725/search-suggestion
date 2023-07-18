@@ -1,15 +1,19 @@
 import styled from 'styled-components';
+import { BUTTON_SIZE } from '../../constants/config';
 
-const Button = styled.button`
+const Button = styled.button<{
+  size: 'md' | 'sm' | 'lg';
+  color: 'blue' | 'gray';
+}>`
   border-radius: 100%;
-  width: 48px;
-  height: 48px;
+  width: ${(props) => BUTTON_SIZE[props.size]};
+  height: ${(props) => BUTTON_SIZE[props.size]};
   padding: 0;
   border: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--blue-color);
+  background: ${(props) => `var(--${props.color}-color)`};
   color: var(--white-color);
 
   cursor: pointer;
