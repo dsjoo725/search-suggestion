@@ -5,7 +5,7 @@ export default function useDebounce(
   delay: number,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+  const [debouncedValue, setDebouncedValue] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
